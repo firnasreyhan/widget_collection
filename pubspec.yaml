@@ -1,6 +1,6 @@
 name: widget_collection
 description: "Widget Collection"
-version: 0.0.1
+version: 0.0.2
 homepage:
 
 environment:
@@ -8,7 +8,7 @@ environment:
   flutter: ">=1.17.0"
 
 dependencies:
-  intl: ^0.19.0
+  intl: ^0.18.1
   dropdown_search: ^5.0.6
   get: 4.6.6
   flutter:
