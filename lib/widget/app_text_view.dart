@@ -12,6 +12,7 @@ class AppTextView extends GetView {
   final FontWeight? fontWeight;
   final int? headingSize;
   final TextOverflow? overflow;
+  final TextAlign? textAlign;
 
   const AppTextView({
     super.key,
@@ -20,6 +21,7 @@ class AppTextView extends GetView {
     this.fontWeight,
     this.color,
     this.overflow,
+    this.textAlign,
   });
 
   @override
@@ -27,6 +29,7 @@ class AppTextView extends GetView {
     return Text(
       text,
       overflow: overflow,
+      textAlign: textAlign ?? TextAlign.start,
       style: TextStyle(
           fontFamily: 'Montserrat',
           color: color ?? AppColors.TEXT_COLOR,
