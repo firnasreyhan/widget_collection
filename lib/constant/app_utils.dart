@@ -73,5 +73,11 @@ abstract class AppUtils {
     return jumlahHari == 0 ? tanggalAwal : formatter.format(resultDate);
   }
 
+  static String convertTimeFormat(String time) {
+    List<String> parts = time.split(':');
+    String formattedTime = '${parts[0]}:${parts[1]}';
+    return formattedTime;
+  }
+
   static const timeout = Duration(minutes: 3);
 }
