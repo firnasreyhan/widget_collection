@@ -1,4 +1,5 @@
 import 'package:intl/intl.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 abstract class AppUtils {
   static String getCurrentYear() {
@@ -77,6 +78,13 @@ abstract class AppUtils {
     List<String> parts = time.split(':');
     String formattedTime = '${parts[0]}:${parts[1]}';
     return formattedTime;
+  }
+
+  Future<void> launch(String url, {bool isNewTab = true}) async {
+    await launchUrl(
+      Uri.parse(url),
+      webOnlyWindowName: isNewTab ? '_blank' : '_self',
+    );
   }
 
   static const timeout = Duration(minutes: 3);
