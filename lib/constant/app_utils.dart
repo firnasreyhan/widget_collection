@@ -80,7 +80,7 @@ abstract class AppUtils {
     return formattedTime;
   }
 
-  Future<void> launch(String url, {bool isNewTab = true}) async {
+  static Future<void> launch(String url, {bool isNewTab = true}) async {
     await launchUrl(
       Uri.parse(url),
       webOnlyWindowName: isNewTab ? '_blank' : '_self',
