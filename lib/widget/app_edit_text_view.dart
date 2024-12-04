@@ -14,6 +14,7 @@ class AppEditTextView extends GetView {
   final bool? isReadOnly;
   final bool? isNumber;
   final bool? isShowIcon;
+  final bool? isMultiline;
   final GestureTapCallback? onTap;
   final ValueChanged? onChanged;
 
@@ -25,6 +26,7 @@ class AppEditTextView extends GetView {
       this.isPasswordVisible,
       this.isReadOnly,
       this.isNumber,
+      this.isMultiline,
       this.isShowIcon,
       this.onTap,
       this.onChanged,
@@ -36,6 +38,8 @@ class AppEditTextView extends GetView {
       readOnly: isReadOnly == true ? true : false,
       controller: textEditingController,
       onChanged: onChanged,
+      minLines: isMultiline == true ? 3 : null,
+      maxLines: isMultiline == true ? 6 : null,
       obscureText: isPassword == true
           ? isPasswordVisible == true
               ? false
@@ -89,7 +93,7 @@ class AppEditTextView extends GetView {
                 )
               : isNumber == true ? isShowIcon == true ? const Icon(Icons.percent_rounded) : null : null,
       ),
-      keyboardType: isNumber == true ? TextInputType.number : TextInputType.text,
+      keyboardType: isNumber == true ? TextInputType.number : isMultiline == true ? TextInputType.multiline : TextInputType.text,
       inputFormatters: [
         if (isNumber == true) ...{
           FilteringTextInputFormatter.allow(RegExp('[0-9\.]'))
