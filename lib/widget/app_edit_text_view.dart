@@ -38,8 +38,8 @@ class AppEditTextView extends GetView {
       readOnly: isReadOnly == true ? true : false,
       controller: textEditingController,
       onChanged: onChanged,
-      minLines: isMultiline == true ? 3 : null,
-      maxLines: isMultiline == true ? 6 : null,
+      minLines: isMultiline == true ? 10 : null,
+      maxLines: isMultiline == true ? 10 : null,
       obscureText: isPassword == true
           ? isPasswordVisible == true
               ? false
