@@ -13,24 +13,26 @@ class AppEditTextView extends GetView {
   final bool? isPasswordVisible;
   final bool? isReadOnly;
   final bool? isNumber;
+  final bool? isCurrency;
   final bool? isShowIcon;
   final bool? isMultiline;
   final GestureTapCallback? onTap;
   final ValueChanged? onChanged;
 
-  const AppEditTextView(
-      {super.key,
-      required this.textEditingController,
-      required this.hint,
-      this.isPassword,
-      this.isPasswordVisible,
-      this.isReadOnly,
-      this.isNumber,
-      this.isMultiline,
-      this.isShowIcon,
-      this.onTap,
-      this.onChanged,
-      });
+  const AppEditTextView({
+    super.key,
+    required this.textEditingController,
+    required this.hint,
+    this.isPassword,
+    this.isPasswordVisible,
+    this.isReadOnly,
+    this.isNumber,
+    this.isCurrency,
+    this.isMultiline,
+    this.isShowIcon,
+    this.onTap,
+    this.onChanged,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -51,52 +53,63 @@ class AppEditTextView extends GetView {
           color: Colors.black,
           fontSize: bodyFontSize(context).toDouble()),
       decoration: InputDecoration(
-          hintText: hint,
-          filled: true,
-          fillColor: isReadOnly == true ? AppColors.DISABLE : Colors.white,
-          hintStyle: const TextStyle(
-              fontFamily: 'Montserrat',
-              fontWeight: FontWeight.normal,
-              color: Colors.grey),
-          enabledBorder: OutlineInputBorder(
-              borderSide:
-                  const BorderSide(color: AppColors.BORDER_COLOR, width: 1),
-              borderRadius: BorderRadius.circular(8)),
-          focusedBorder: OutlineInputBorder(
-            borderSide: const BorderSide(
-              color: Colors.amber,
-              width: 2,
-            ),
-            borderRadius: BorderRadius.circular(8),
+        hintText: hint,
+        filled: true,
+        fillColor: isReadOnly == true ? AppColors.DISABLE : Colors.white,
+        hintStyle: const TextStyle(
+            fontFamily: 'Montserrat',
+            fontWeight: FontWeight.normal,
+            color: Colors.grey),
+        enabledBorder: OutlineInputBorder(
+            borderSide:
+                const BorderSide(color: AppColors.BORDER_COLOR, width: 1),
+            borderRadius: BorderRadius.circular(8)),
+        focusedBorder: OutlineInputBorder(
+          borderSide: const BorderSide(
+            color: Colors.amber,
+            width: 2,
           ),
-          errorBorder: OutlineInputBorder(
-            borderSide: const BorderSide(
-              color: Colors.red,
-              width: 2,
-            ),
-            borderRadius: BorderRadius.circular(8),
+          borderRadius: BorderRadius.circular(8),
+        ),
+        errorBorder: OutlineInputBorder(
+          borderSide: const BorderSide(
+            color: Colors.red,
+            width: 2,
           ),
-          focusedErrorBorder: OutlineInputBorder(
-            borderSide: const BorderSide(
-              color: Colors.red,
-              width: 2,
-            ),
-            borderRadius: BorderRadius.circular(8),
+          borderRadius: BorderRadius.circular(8),
+        ),
+        focusedErrorBorder: OutlineInputBorder(
+          borderSide: const BorderSide(
+            color: Colors.red,
+            width: 2,
           ),
-          contentPadding: const EdgeInsetsDirectional.all(16),
-          suffixIcon: isPassword == true
-              ? GestureDetector(
-                  onTap: onTap,
-                  child: Icon(isPasswordVisible == true
-                      ? Icons.visibility_rounded
-                      : Icons.visibility_off_rounded),
-                )
-              : isNumber == true ? isShowIcon == true ? const Icon(Icons.percent_rounded) : null : null,
+          borderRadius: BorderRadius.circular(8),
+        ),
+        contentPadding: const EdgeInsetsDirectional.all(16),
+        suffixIcon: isPassword == true
+            ? GestureDetector(
+                onTap: onTap,
+                child: Icon(isPasswordVisible == true
+                    ? Icons.visibility_rounded
+                    : Icons.visibility_off_rounded),
+              )
+            : isNumber == true
+                ? isShowIcon == true
+                    ? const Icon(Icons.percent_rounded)
+                    : null
+                : null,
       ),
-      keyboardType: isNumber == true ? TextInputType.number : isMultiline == true ? TextInputType.multiline : TextInputType.text,
+      keyboardType: isNumber == true
+          ? TextInputType.number
+          : isMultiline == true
+              ? TextInputType.multiline
+              : TextInputType.text,
       inputFormatters: [
         if (isNumber == true) ...{
           FilteringTextInputFormatter.allow(RegExp('[0-9\.]'))
+        },
+        if (isCurrency == true) ...{
+          FilteringTextInputFormatter.allow(RegExp('[0-9]'))
         },
       ],
     );
