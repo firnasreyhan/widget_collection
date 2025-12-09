@@ -2,6 +2,7 @@ import 'package:dropdown_search/dropdown_search.dart';
 import 'package:flutter/material.dart';
 
 import 'package:get/get.dart';
+import 'package:widget_collection/widget/app_text_view.dart';
 
 import '../constant/app_colors.dart';
 
@@ -73,6 +74,10 @@ class AppDropdownView<T> extends GetView {
               ),
             ),
           ),
+        ),
+        itemBuilder: (context, item, isSelected) => Padding(
+          padding: const EdgeInsets.all(8.0),
+          child: AppTextView(text: item.toString()),
         ),
       ),
       items: data,
