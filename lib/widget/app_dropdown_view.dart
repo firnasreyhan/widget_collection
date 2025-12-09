@@ -113,7 +113,7 @@ class AppDropdownView<T> extends GetView {
           final text =
               itemAsString != null ? itemAsString!(item) : item.toString();
           return Padding(
-            padding: const EdgeInsets.all(8.0),
+            padding: const EdgeInsetsDirectional.all(16),
             child: AppTextView(
               text: text,
             ),
