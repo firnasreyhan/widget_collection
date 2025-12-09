@@ -75,10 +75,6 @@ class AppDropdownView<T> extends GetView {
             ),
           ),
         ),
-        itemBuilder: (context, item, isSelected) => Padding(
-          padding: const EdgeInsets.all(8.0),
-          child: AppTextView(text: item.toString()),
-        ),
       ),
       items: data,
       onChanged: onChanged,
@@ -117,6 +113,34 @@ class AppDropdownView<T> extends GetView {
               Radius.circular(8),
             ),
           ),
+          counterStyle: const TextStyle(
+              fontFamily: 'Montserrat',
+              fontWeight: FontWeight.normal,
+              color: Colors.grey),
+          errorStyle: const TextStyle(
+              fontFamily: 'Montserrat',
+              fontWeight: FontWeight.normal,
+              color: Colors.grey),
+          floatingLabelStyle: const TextStyle(
+              fontFamily: 'Montserrat',
+              fontWeight: FontWeight.normal,
+              color: Colors.grey),
+          helperStyle: const TextStyle(
+              fontFamily: 'Montserrat',
+              fontWeight: FontWeight.normal,
+              color: Colors.grey),
+          labelStyle: const TextStyle(
+              fontFamily: 'Montserrat',
+              fontWeight: FontWeight.normal,
+              color: Colors.grey),
+          prefixStyle: const TextStyle(
+              fontFamily: 'Montserrat',
+              fontWeight: FontWeight.normal,
+              color: Colors.grey),
+          suffixStyle: const TextStyle(
+              fontFamily: 'Montserrat',
+              fontWeight: FontWeight.normal,
+              color: Colors.grey),
         ),
       ),
     );
