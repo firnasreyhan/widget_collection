@@ -1,7 +1,7 @@
 name: widget_collection
 description: "Widget Collection"
-version: 0.1.9
-homepage:
+version: 0.2.0
+homepage: ""
 
 environment:
   sdk: '>=3.2.3 <4.0.0'

@@ -5,6 +5,7 @@ import 'package:get/get.dart';
 import 'package:widget_collection/widget/app_text_view.dart';
 
 import '../constant/app_colors.dart';
+import '../constant/app_font_size.dart';
 
 class AppDropdownView<T> extends GetView {
   final String searchHint;
@@ -40,6 +41,11 @@ class AppDropdownView<T> extends GetView {
       popupProps: PopupProps.menu(
         showSearchBox: true,
         searchFieldProps: TextFieldProps(
+          style: TextStyle(
+              fontFamily: 'Montserrat',
+              fontWeight: FontWeight.normal,
+              color: Colors.black,
+              fontSize: bodyFontSize(context).toDouble()),
           decoration: InputDecoration(
             filled: true,
             fillColor: Colors.white,
@@ -49,6 +55,34 @@ class AppDropdownView<T> extends GetView {
               fontWeight: FontWeight.normal,
               color: Colors.grey,
             ),
+            counterStyle: const TextStyle(
+                fontFamily: 'Montserrat',
+                fontWeight: FontWeight.normal,
+                color: Colors.grey),
+            errorStyle: const TextStyle(
+                fontFamily: 'Montserrat',
+                fontWeight: FontWeight.normal,
+                color: Colors.grey),
+            floatingLabelStyle: const TextStyle(
+                fontFamily: 'Montserrat',
+                fontWeight: FontWeight.normal,
+                color: Colors.grey),
+            helperStyle: const TextStyle(
+                fontFamily: 'Montserrat',
+                fontWeight: FontWeight.normal,
+                color: Colors.grey),
+            labelStyle: const TextStyle(
+                fontFamily: 'Montserrat',
+                fontWeight: FontWeight.normal,
+                color: Colors.grey),
+            prefixStyle: const TextStyle(
+                fontFamily: 'Montserrat',
+                fontWeight: FontWeight.normal,
+                color: Colors.grey),
+            suffixStyle: const TextStyle(
+                fontFamily: 'Montserrat',
+                fontWeight: FontWeight.normal,
+                color: Colors.grey),
             enabledBorder: const OutlineInputBorder(
               borderSide: BorderSide(color: AppColors.BORDER_COLOR, width: 1),
               borderRadius: BorderRadius.all(
@@ -154,5 +188,12 @@ class AppDropdownView<T> extends GetView {
         ),
       ),
     );
+  }
+
+  int bodyFontSize(BuildContext context) {
+    return context.responsiveValue(
+        desktop: AppFontSize.D_BODY,
+        tablet: AppFontSize.P_BODY,
+        mobile: AppFontSize.P_BODY);
   }
 }
