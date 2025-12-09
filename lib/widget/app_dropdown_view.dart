@@ -75,6 +75,13 @@ class AppDropdownView<T> extends GetView {
             ),
           ),
         ),
+        itemBuilder: (context, item, isSelected) {
+          final text =
+              itemAsString != null ? itemAsString!(item) : item.toString();
+          return AppTextView(
+            text: text,
+          );
+        },
       ),
       items: data,
       onChanged: onChanged,
